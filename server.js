@@ -19,7 +19,7 @@ app.use(
         [process.env.FRONT_END1, process.env.FRONT_END2].indexOf(origin) === -1
       ) {
         console.log(origin);
-        console.log(ALLOWED_ORIGINS.indexOf(origin));
+        // console.log(ALLOWED_ORIGINS.indexOf(origin));
         var msg =
           'The CORS policy for this site does not ' +
           'allow access from the specified Origin.';

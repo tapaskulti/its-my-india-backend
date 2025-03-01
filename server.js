@@ -16,7 +16,9 @@ app.use(
       // (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
       if (
-        [process.env.FRONT_END1, process.env.FRONT_END2].indexOf(origin) === -1
+        // [process.env.FRONT_END1, process.env.FRONT_END2].indexOf(origin) === -1
+        ["https://my-india-frontend-3nlyv.ondigitalocean.app/"].indexOf(origin) === -1
+
       ) {
         console.log(origin);
         // console.log(ALLOWED_ORIGINS.indexOf(origin));

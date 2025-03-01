@@ -5,7 +5,6 @@ const paymentsRoutes = require('./routes/payments.routes');
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-// const PORT = process.env.REACT_APP_BACKEND_URL
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

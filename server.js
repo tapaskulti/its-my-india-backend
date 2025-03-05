@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 //   })
 // );
 
-const allowedDomains = ["https://my-india-frontend-3nlyv.ondigitalocean.app"];
+const allowedDomains = ["https://itsmyindia.com"];
 app.use(
   cors({
     origin: function (origin, callback) {

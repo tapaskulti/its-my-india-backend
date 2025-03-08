@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedDomains = ["https://itsmyindia.com", "http://localhost:5173"];
+const allowedDomains = ["https://itsmyindia.com"];
 
 app.use(
   cors({

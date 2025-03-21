@@ -1,13 +1,15 @@
-const express = require("express");
+const express = require('express');
 const {
   createOrder,
   verifyPayment,
   checkCoupon,
-} = require("../controllers/payments.controller");
+  sendDetails,
+} = require('../controllers/payments.controller');
 const router = express.Router();
 
-router.post("/createOrder", createOrder);
-router.post("/verifyPayment", verifyPayment);
-router.post("/checkCoupon", checkCoupon);
+router.post('/createOrder', createOrder);
+router.post('/verifyPayment', verifyPayment);
+router.post('/checkCoupon', checkCoupon);
+router.get('/sendDetails', sendDetails);
 
 module.exports = router;

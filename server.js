@@ -1,7 +1,7 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
-const paymentsRoutes = require("./routes/payments.routes");
+const paymentsRoutes = require('./routes/payments.routes');
 const app = express();
 
 const PORT = process.env.PORT || 4000;
@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedDomains = ["https://itsmyindia.com"];
+const allowedDomains = ['https://itsmyindia.com', 'http://localhost:5173'];
 
 app.use(
   cors({
@@ -19,23 +19,23 @@ app.use(
       if (!origin) return callback(null, true);
       if (allowedDomains.indexOf(origin) === -1) {
         var msg =
-          "The CORS policy for this site does not " +
-          "allow access from the specified Origin.";
+          'The CORS policy for this site does not ' +
+          'allow access from the specified Origin.';
         return callback(new Error(msg), false);
       }
       return callback(null, true);
     },
     credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     preflightContinue: false,
     optionsSuccessStatus: 200,
   })
 );
 
-app.use("/api", paymentsRoutes);
+app.use('/api/v1', paymentsRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
 });
 
 app.listen(PORT, () => {

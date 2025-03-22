@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const allowedDomains = ["https://itsmyindia.com"];
+// const allowedDomains = ["http://localhost:4000"];
 
 app.use(
   cors({

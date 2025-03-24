@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const handlebars = require('handlebars');
+
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
+
 const { createRazorpayInstance } = require('../config/rezorpay.config');
-const crypto = require('crypto');
 
 const { COUPON } = require('../constants/coupon');
 
@@ -30,6 +32,7 @@ exports.createOrder = async (req, res) => {
   }
 
   const amount = process.env.BOOK_NOW;
+  const shppingCharge = process.env.SHIPPING_CHARGE;
 
   if (!amount) {
     return res.status(400).json({
@@ -52,7 +55,7 @@ exports.createOrder = async (req, res) => {
   const purchasePrice = amount - discountedAmount;
 
   const options = {
-    amount: purchasePrice * 100, // in Paisa
+    amount: (purchasePrice + +shppingCharge) * 100, // in Paisa
     currency: 'INR',
     receipt: generateReceiptId(),
   };
@@ -124,11 +127,16 @@ exports.checkCoupon = async (req, res) => {
   );
 
   if (!isValidCoupon) {
-    res.status(400).json({ message: 'Coupon is not Valid' });
+    res
+      .status(400)
+      .json({ message: 'Coupon is not Valid', discountPercentage: 0 });
     return;
   }
 
-  res.status(201).json({ message: 'Coupon is Valid' });
+  res.status(201).json({
+    message: 'Coupon is Valid',
+    discountPercentage: COUPON[coupon.trim()],
+  });
 };
 
 exports.sendDetails = async (req, res) => {

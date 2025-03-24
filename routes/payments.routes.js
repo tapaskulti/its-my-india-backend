@@ -10,6 +10,6 @@ const router = express.Router();
 router.post('/createOrder', createOrder);
 router.post('/verifyPayment', verifyPayment);
 router.post('/checkCoupon', checkCoupon);
-router.get('/sendDetails', sendDetails);
+router.post('/sendDetails', sendDetails);
 
 module.exports = router;

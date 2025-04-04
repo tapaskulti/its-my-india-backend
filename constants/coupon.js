@@ -1,6 +1,7 @@
 // COUPON_NAME: DISCOUNT_PERCENT
 const COUPON = {
   EDU15: 15,
+  RAHUL24: 50,
 };
 
 exports.COUPON = COUPON;

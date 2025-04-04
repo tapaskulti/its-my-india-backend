@@ -38,6 +38,6 @@ app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Example api listining at http://localhost:${PORT}`);
+app.listen(PORT || 4000, () => {
+  console.log(`Example api listining at http://localhost:${PORT || 4000}`);
 });

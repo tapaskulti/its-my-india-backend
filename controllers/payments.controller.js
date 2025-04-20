@@ -103,7 +103,7 @@ exports.verifyPayment = async (req, res) => {
   if (generateSignature === razorpay_signature) {
     return res.status(200).json({
       success: true,
-      message: 'Payment verified',
+      message: 'Payment successfull',
     });
   } else {
     return res.status(400).json({
@@ -188,7 +188,7 @@ exports.sendDetails = async (req, res) => {
         const adminMailOptions = {
           from: process.env.EMAIL_USER,
           to: process.env.EMAIL_USER,
-          subject: 'New Order',
+          subject: 'ItsMyIndia - New Order',
           html: clientDetailsBody,
         };
 
@@ -196,7 +196,7 @@ exports.sendDetails = async (req, res) => {
         const userMailOptions = {
           from: process.env.EMAIL_USER,
           to: customerEmail,
-          subject: 'Thank you Buying',
+          subject: 'Thank you for Buying',
           html: clientDetailsBody,
         };
 

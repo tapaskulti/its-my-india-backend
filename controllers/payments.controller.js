@@ -187,7 +187,8 @@ exports.sendDetails = async (req, res) => {
         // Email to admin/yourself
         const adminMailOptions = {
           from: process.env.EMAIL_USER,
-          to: process.env.EMAIL_USER,
+          // to: process.env.EMAIL_USER,
+          to:["book@takshilafound.org", "tapaskulti@gmail.com"],
           subject: 'ItsMyIndia - New Order',
           html: clientDetailsBody,
         };
